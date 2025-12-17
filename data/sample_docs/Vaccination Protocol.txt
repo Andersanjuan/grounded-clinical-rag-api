@@ -1,0 +1,5 @@
+Verify patient’s vaccination history at each visit.
+
+Follow age-appropriate immunization schedules (e.g., influenza annually, tetanus booster every 10 years).
+
+Document all administered vaccines in the patient’s medical record.
