@@ -17,25 +17,27 @@ logging.basicConfig(level=logging.INFO)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # --- startup ---
+    print("Startup: initializing embedder...")
     state.embedder = LocalEmbeddingModel()
+    print("Startup: embedder ready")
+
+    print("Startup: initializing vector store...")
     state.vector_store = ChromaVectorStore(
         collection_name=settings.chroma_collection,
         persist_directory=settings.chroma_dir,
     )
+    print("Startup: vector store ready")
 
+    print("Startup: initializing LLM client...")
     state.llm = ChatOllama(
-    model=settings.ollama_model,
-    temperature=settings.llm_temperature,
-    base_url=settings.ollama_base_url,
+        model=settings.ollama_model,
+        temperature=settings.llm_temperature,
+        base_url=settings.ollama_base_url,
     )
+    print("Startup: LLM client ready")
 
-    print("Startup complete: embedder, vector_store, and LLM initialized")
-
-    yield  # application runs here
-
-    # --- shutdown (optional cleanup) ---
-    # If you later add DB connections or background workers, clean them here
+    print("Startup complete")
+    yield
     print("Shutdown complete")
 
 app = FastAPI(title="MedRAG Clinical Assistant API", lifespan=lifespan)
