@@ -1,11 +1,11 @@
-MedRAG Clinical Assistant API
+**MedRAG Clinical Assistant API**
 
 A grounded Retrieval-Augmented Generation (RAG) backend designed for clinical and biomedical text, emphasizing accuracy, abstention, citation enforcement, privacy-aware logging, and containerized deployment.
 
 This project demonstrates how to safely serve LLM-based question answering over internal clinical documentation using modern NLP tooling, while minimizing hallucinations and enabling auditability.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1. High-Level Overview
+**1. High-Level Overview**
 
 MedRAG is a FastAPI backend that:
 
@@ -24,13 +24,13 @@ MedRAG is a FastAPI backend that:
 Out-of-scope or low-confidence queries result in a safe refusal, rather than speculative answers.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-2. Architecture
+**2. Architecture**
 
-Document Ingestion
+**Document Ingestion**
   └── Load → Chunk → Embed
            └── ChromaDB (vector store)
 
-Query Flow
+**Query Flow**
   User Question
      └── Embed query
           └── Vector similarity search (top-k + distances)
@@ -44,7 +44,7 @@ Key design principle:
 The LLM is never allowed to answer unless the retrieved evidence meets a configurable confidence threshold.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-3. Key Features
+**3. Key Features**
 
 Build RAG Pipelines
 
@@ -107,7 +107,7 @@ Deployment & Operations
 
     Compatible with local or hosted Ollama deployments
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-4. API Endpoints
+**4. API Endpoints**
 
 GET /health
 
@@ -134,7 +134,7 @@ Returns a grounded answer or abstains, including:
 All non-health endpoints require X-API-Key if configured.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-5. Quickstart
+**5. Quickstart**
 
 Local Development
     pip install -r requirements.txt
@@ -150,7 +150,7 @@ docker build -t medrag-api .
     medrag-api
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-6. Configuration (Environment Variables)
+**6. Configuration (Environment Variables)**
 
 Variable    Description
 API_KEY	    Optional API key for request authentication
@@ -160,7 +160,7 @@ MAX_DISTANCE	Retrieval confidence threshold
 CHROMA_DIR  Vector DB persistence directory
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-7. Grounding Evaluation
+**7. Grounding Evaluation**
 Grounding behavior is evaluated using a separate HTTP-based evaluation harness that exercises the deployed API end-to-end.
 
 Example Results:
@@ -187,7 +187,7 @@ Summary
     Abstention behavior matched expectations in all test cases
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-8. Limitations & Future Work
+**8. Limitations & Future Work**
 
 Add PDF and HTML ingestion pipelines
 
@@ -200,7 +200,7 @@ Audit logging suitable for regulated environments
 Offline embedding + model evaluation benchmarks
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-9. Disclaimer
+**9. Disclaimer**
 
 This project is a technical demonstration of grounded RAG systems.
 It is not a clinical decision-making tool and should not be used for patient care.
