@@ -1,4 +1,4 @@
-**MedRAG Clinical Assistant API**
+**RAG Clinical Assistant API**
 
 A grounded Retrieval-Augmented Generation (RAG) backend designed for clinical and biomedical text, emphasizing accuracy, abstention, citation enforcement, privacy-aware logging, and containerized deployment.
 
