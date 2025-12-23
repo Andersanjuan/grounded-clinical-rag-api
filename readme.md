@@ -7,7 +7,7 @@ This project demonstrates how to safely serve LLM-based question answering over 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **1. High-Level Overview**
 
-MedRAG is a FastAPI backend that:
+FastAPI backend that:
 
     Ingests unstructured clinical text (TXT/PDF/HTML-ready)
 
